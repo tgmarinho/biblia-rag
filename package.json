@@ -14,7 +14,7 @@
     "db:psql": "docker compose exec postgres psql -U biblia -d biblia",
     "dev": "tsx watch src/server.ts",
     "start": "node --import tsx src/server.ts",
-    "search": "tsx src/cli.ts",
+    "buscar": "tsx src/cli.ts",
     "ingest:pt": "tsx scripts/ingest-pt.ts",
     "typecheck": "tsc --noEmit"
   },

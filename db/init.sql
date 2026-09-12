@@ -42,10 +42,15 @@ CREATE TABLE verses (
   chapter     INTEGER NOT NULL,
   verse       INTEGER NOT NULL,
   text        TEXT NOT NULL,
+  tsv         tsvector GENERATED ALWAYS AS (to_tsvector('portuguese', text)) STORED,
   UNIQUE (version_id, book_id, chapter, verse)
 );
 
 CREATE INDEX verses_ref_idx ON verses (book_id, chapter, verse);
+
+-- Busca textual no nivel de versiculo: recall completo por palavra (ex.: "gloria",
+-- "glorificado" - o stemming do portugues agrupa as variacoes da mesma raiz).
+CREATE INDEX verses_tsv_idx ON verses USING gin (tsv);
 
 -- ---------------------------------------------------------------------------
 -- Camada de recuperacao: janelas de versiculos (a unidade que e embutida e
