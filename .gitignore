@@ -1,0 +1,28 @@
+# Dependências
+node_modules/
+.pnp.*
+.venv/
+__pycache__/
+
+# Build / output
+dist/
+build/
+.next/
+out/
+
+# Ambiente
+.env
+.env.*
+!.env.example
+
+# Dados brutos e modelos (baixados via script, não versionados)
+data/raw/
+data/models/
+*.sqlite
+*.db
+
+# Editor / SO
+.DS_Store
+.idea/
+.vscode/
+*.log
